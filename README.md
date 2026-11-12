@@ -6,15 +6,15 @@ This is a small, static, single-page website. It uses only `index.html` and `sty
 
 Open `index.html` in a browser to preview the page. Edit the HTML to change copy, links, or package information, and `styles.css` to change presentation. The page uses system fonts and has no external assets to install.
 
-## Basic hosting
+## Hosting and deployment
 
-Upload `index.html` and `styles.css` to the website's document root. Configure the hosting plan to serve `index.html` as its default document and enable HTTPS. The exact redirect/configuration syntax depends on the hosting provider and server; do not install IIS-, Apache-, or other host-specific rules until the host is known. Back up the current site and hosting configuration before changing files.
+The site is hosted at <https://alitirmazi.github.io/website-fabrons/> using GitHub Pages. The workflow in `.github/workflows/pages.yml` publishes `index.html` and `styles.css` whenever a change is pushed to `main`; it can also be started manually from the repository's Actions tab. GitHub Pages serves the site over HTTPS. No build step, custom domain, or DNS change is required.
 
-If the domain also handles email, preserve its existing mail and DNS settings when updating website hosting or DNS. Do not make domain or deployment changes without confirming the provider and current configuration.
+The repository is public to support GitHub Pages on its current plan. If changing hosting or DNS in the future, preserve any existing mail settings and back up the current configuration first.
 
 ## Legacy URL redirects
 
-Configure permanent redirects at the hosting provider, where supported. The provider/server is not known, so these are destination mappings only:
+These are the desired destinations for legacy links:
 
 | Legacy URL | Destination |
 | --- | --- |
@@ -24,7 +24,7 @@ Configure permanent redirects at the hosting provider, where supported. The prov
 | `/contact.aspx` | `/#contact` |
 | `/partners.aspx` | Retire the page; return a not-found response or redirect to `/` rather than implying partner relationships |
 
-Confirm that the host preserves the fragment destinations as needed; URL fragments are normally handled by the browser and are not sent to the server.
+The current Pages workflow deploys only the two site files above and does not implement legacy `.aspx` redirects. GitHub Pages does not provide server-side rewrite rules; decide how to handle these old URLs before retiring the previous host. URL fragments are handled by the browser and are not sent to the server.
 
 ## Pre-launch confirmation gates
 
